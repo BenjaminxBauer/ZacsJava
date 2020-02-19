@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 
 public class compoundInterest {
+    
 
 
 public static double getBalance() {
@@ -45,10 +46,9 @@ public static double getYearlyInterest(double interestRate, double balance) {
     yearlyBalance =  balance;
     for (int year = 1; year <= 10; year++) {
      yearlyInterest = interestRate / 100;
-     System.out.print(yearlyInterest);
-     yearlyBalance =  yearlyBalance * yearlyInterest;              
+     yearlyBalance =  yearlyBalance * (1 + yearlyInterest);              
     }
-    return yearlyBalance;
+    return (Math.round(yearlyBalance * 100) / 100) ;
 }
 
 public static double getMonthlyInterest(double interestRate, double balance) {
@@ -59,10 +59,12 @@ public static double getMonthlyInterest(double interestRate, double balance) {
     double monthlyInterest = 0;
     monthlyBalance = balance;
     for (int year = 1; year <= 10; year++) {
+        for (int month = 1; month <= 12; month++) {
      monthlyInterest = (interestRate / 100) / 12;
-     monthlyBalance =  (monthlyBalance * monthlyInterest) * 12;              
+     monthlyBalance = (monthlyBalance * (1 + monthlyInterest)) ;              
     }
-    return monthlyBalance;
+    }
+    return (Math.round(monthlyBalance*100) / 100);
 }
 
 public static double getDailyInterest(double interestRate, double balance) {
@@ -73,10 +75,12 @@ public static double getDailyInterest(double interestRate, double balance) {
     double dailyInterest = 0;
     dailyBalance = balance;
     for (int year = 1; year <= 10; year++) {
+        for (int day = 1; day <= 365; day++) {
      dailyInterest = (interestRate / 100) / 365;
-     dailyBalance =  (dailyBalance * dailyInterest) * 365;              
+     dailyBalance =  (dailyBalance * (1 + dailyInterest));              
     }
-    return dailyBalance;
+    }
+    return (Math.round(dailyBalance*100) / 100);
 }
 
 public static void main(String[] args){
@@ -89,7 +93,8 @@ double finalYearlyBalance = 0;
 double finalMonthlyBalance = 0;
 double finalDailyBalance = 0;
 
-System.out.println("This program will read an account balance and an interest rate and display the account in 10 years.");
+System.out.println("This program will read an account balance and an interest"
+        +" rate and display the account in 10 years.");
 
 do{
     
@@ -141,4 +146,5 @@ System.out.println("An error has occured");
 System.out.println("");
 }while(keepGoing);
 }
+
 }
