@@ -119,9 +119,9 @@ finalMonthlyBalance = getMonthlyInterest(interestRate, balance);
 finalDailyBalance = getDailyInterest(interestRate, balance);
 
 System.out.println("Your balance after 10 years is shown with interest compounded in different ways.");
-System.out.println("Yearly: " + finalYearlyBalance );
-System.out.println("Monthly:" + finalMonthlyBalance );
-System.out.println("Daily: " + finalDailyBalance );
+System.out.printf("Yearly: $" + "%.2f",finalYearlyBalance );
+System.out.printf("\nMonthly: $" + "%.2f",finalMonthlyBalance );
+System.out.printf("\nDaily: $" + "%.2f",finalDailyBalance );
 
 
 
