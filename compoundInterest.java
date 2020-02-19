@@ -48,7 +48,7 @@ public static double getYearlyInterest(double interestRate, double balance) {
      yearlyInterest = interestRate / 100;
      yearlyBalance =  yearlyBalance * (1 + yearlyInterest);              
     }
-    return (Math.round(yearlyBalance * 100) / 100) ;
+    return ((yearlyBalance * 100) / 100) ;
 }
 
 public static double getMonthlyInterest(double interestRate, double balance) {
@@ -64,7 +64,7 @@ public static double getMonthlyInterest(double interestRate, double balance) {
      monthlyBalance = (monthlyBalance * (1 + monthlyInterest)) ;              
     }
     }
-    return (Math.round(monthlyBalance*100) / 100);
+    return ((monthlyBalance*100) / 100);
 }
 
 public static double getDailyInterest(double interestRate, double balance) {
@@ -80,7 +80,7 @@ public static double getDailyInterest(double interestRate, double balance) {
      dailyBalance =  (dailyBalance * (1 + dailyInterest));              
     }
     }
-    return (Math.round(dailyBalance*100) / 100);
+    return ((dailyBalance*100) / 100);
 }
 
 public static void main(String[] args){
