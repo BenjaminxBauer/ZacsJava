@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package question03;
+
+/**
+ *
+ * @author zneuh
+ */
+import java.util.Scanner;
+
+
+public class PigLatin {
+ 
+    public static void main(String[] args){
+      PigLatin demo = new PigLatin();
+        String inEnglish = "Now is the winter of our discontent " +
+                "Made glorious summer by this sun of York; " +
+                "And all the clouds that lour'd upon our house " +
+                "In the deep bosom of the ocean buried.";
+        String inPigLatin = "avajay isyay ayay onderfulway ogrammingpray " +
+                "anguagelay, andyay objectyay-orientedyay ogrammingpray " +
+                "isyay ethay estbay ingthay afteryay icedslay eadbray.";
+        System.out.println(demo.toPig(inEnglish));
+        System.out.println(demo.fromPig(inPigLatin));
+    }
+    
+    static String toPig(String string) {
+        String end = "";
+        String delims = "\\s+";
+        String[] words = string.split(delims);
+        for (int i = 0; i < words.length; i++) {
+            if(isVowel(words[i].toLowerCase().charAt(0))) {
+              end += words[i] + "yay ";  
+            }else{
+           
+           end += words[i].substring(1) + words[i].substring(0, 1).toLowerCase() + "ay ";
+        }
+    }
+        return end;
+}
+    
+    static String fromPig(String string) {
+        String end = "";
+        String delims = "\\s+";
+        String[] wordsPL = string.split(delims);
+        String[] NewwordsPL;
+        for (int i = 0; i < wordsPL.length; i++) {
+            if(wordsPL[i].contains("yay") ) {
+            wordsPL[i] = wordsPL[i].replace("yay", " ");
+            end += wordsPL[i] + " ";
+        } else {
+            int ayEnding = wordsPL[i].lastIndexOf("ay");
+            char newBeginning = wordsPL[i].charAt(ayEnding - 1);
+            wordsPL[i] = wordsPL[i].replace("ay","");
+            wordsPL[i] = wordsPL[i].substring(0, wordsPL[i].length() - 1);
+            end += newBeginning + wordsPL[i] + " ";
+        } 
+    }
+        return end;
+}
+    
+
+    private static boolean isVowel(char c) {
+        if((c == 'a') || (c == 'e') || (c == 'i') || (c == 'o') || (c == 'u')) {
+        return true;
+        } else {
+            return false;
+        }
+        
+    }
+}
